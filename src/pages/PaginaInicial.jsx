@@ -1,6 +1,8 @@
-export default function HomePage() {
+import { Link } from "react-router-dom";
+
+export default function InicialPage() {
   return (
-    <div className="imgfundo max-w-screen-xl h-svh  my-2 text-white text-border flex flex-col ">
+    <div className="imgfundo max-w-screen h-screen p-2  text-white text-border flex flex-col ">
       <Header />
       <Main />
     </div>
@@ -9,30 +11,35 @@ export default function HomePage() {
 
 function Header() {
   return (
-    <div className=" w-full h-[14%] flex justify-between px-6">
+    <div className=" w-full h-24 flex justify-between px-8 shadow-sm shadow-blue-400">
       {/* Div logo*/}
-      <div className="p-1">
+      <div className="p-2">
         <img
           className="w-40 h-full"
-          src="public/assets/netflix-logo.png"
+          src="public/assets/themoviedbLogo.png"
           alt="logo"
         />
       </div>
       {/* Div idiomas*/}
-      <div className="flex gap-6 items-center">
-        <div>
+      <div className="flex gap-4 items-center">
+        <div className="h-10">
           <select
             name="linguagem"
             id="idiomas"
-            className="bg-transparent border border-white rounded-sm p-1"
+            className="bg-transparent hover:bg-blue-400 border border-white rounded-sm p-1 h-full"
           >
             <option>Português</option>
             <option>Inglês</option>
           </select>
         </div>
         {/* Div Entrar/Login */}
-        <div>
-          <button className="bg-red-600 p-1.5  px-3 rounded-lg">Entrar</button>
+        <div className="h-10">
+          <Link to={"/login"}>
+            <button className="h-full bg-blue-400 rounded-sm p-2 px-4 hover:bg-blue-600">
+              {" "}
+              Entrar
+            </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -41,11 +48,11 @@ function Header() {
 
 function Main() {
   return (
-    <div className=" w-full h-full flex flex-col md:flex-rowjustify-center items-center leading-relaxed  ">
-      <div className="bg-transparent shadow-xl shadow-black p-2 h-80 rounded-md ">
+    <div className="w-full h-full flex flex-col md:flex-row justify-center items-center leading-relaxed font-mono  ">
+      <div className="bg-transparent shadow-xl shadow-black p-2 h-80 rounded-md  flex items-center">
         <div className="flex flex-col  justify-around h-full w-[90%] md:w-full ">
           <p className="text-4xl">Filmes, séries e muito mais. Sem limites.</p>
-          <p className="text-2xl">
+          <p className="text-3xl">
             Assista onde quiser. Cancele quando quiser.
           </p>
           <p className="text-xl">
@@ -59,7 +66,7 @@ function Main() {
               className="w-[80%] sm:w-full"
             />
             <input
-              className="bg-red-600 px-1 rounded-r-md"
+              className="bg-blue-400 hover:bg-blue-600 px-1 rounded-r-md"
               type="button"
               value="Vamos la"
             />

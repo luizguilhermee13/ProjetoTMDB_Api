@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,18 +36,22 @@ export default function CategoriaSelecionada() {
 
   return (
     <div
-      className={`w-full h-full grid justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto gap-4
-    bg-gradient-to-t from-zinc-700 to-zinc-800`}
+      className={`absolute w-full max-w-[77.5rem] h-auto  grid sm:grid-cols-2 md:grid-cols-3 
+    lg:grid-cols-4 gap-2 my-2 p-2 bg-gradient-to-t from-blue-800 to-blue-400`}
     >
       {teste.map((teste, index) => (
-        <div key={index} teste={teste} className="w-full h-full">
-          <Card className="w-[180px] h-[240px]  bg-red-800 shadow-lg text-white border-none">
+        <div
+          key={index}
+          teste={teste}
+          className="w-4/5 mx-auto h-full justify-center"
+        >
+          <Card className="w-[240px] h-[250px] bg-red-600 hover:bg-red-700 shadow-lg text-white text-center border-none m-2">
             <CardContent className="flex aspect-square items-center justify-center p-1  ">
-              <div className="flex flex-col justify-center text-2xl font-semibold w-full h-full ">
-                <Link to={`/MovieSelected/${teste.id}`}>
+              <div className="flex flex-col justify-center text-sm  w-full h-full ">
+                <Link to={`/dashboard/movies/${teste.id}`}>
                   <h2 className="text-xl">{teste.title}</h2>
                   <img
-                    className="h-full w-full rounded-xl bg-cover pb-1"
+                    className="h-40 w-full rounded-xl bg-cover pb-1"
                     src={`https://image.tmdb.org/t/p/w500${teste.backdrop_path}`}
                     alt={teste.original_title}
                   />

@@ -32,8 +32,8 @@ export default function CategotyPage() {
 
   return (
     <div
-      className={`flex flex-col justify-center items-center w-full  h-full 
-    bg-gradient-to-t from-zinc-700 to-zinc-800 text-white`}
+      className={`absolute flex flex-col justify-center items-center w-full max-w-[77.5rem] h-auto   my-2
+    bg-gradient-to-t  from-blue-800 to-blue-400 text-white`}
     >
       <div className="w-full">
         <div className="w-full flex justify-center">

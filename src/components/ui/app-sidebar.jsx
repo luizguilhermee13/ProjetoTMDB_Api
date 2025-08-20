@@ -1,11 +1,4 @@
-import {
-  Tags,
-  Home,
-  Mail,
-  Search,
-  Heart,
-  Link as LinkIcon,
-} from "lucide-react";
+import { Tags, Home, Mail, Search, Heart } from "lucide-react";
 
 import {
   Sidebar,
@@ -24,27 +17,27 @@ import { Link } from "react-router-dom";
 const items = [
   {
     title: "Home",
-    url: "/",
+    url: "/dashboard",
     icon: Home,
   },
   {
     title: "Search",
-    url: "/SearchPage",
+    url: "/dashboard/search",
     icon: Search,
   },
   {
     title: "Categorias",
-    url: "/CategotyPage",
+    url: "/dashboard/categories",
     icon: Tags,
   },
   {
     title: "Favoritos",
-    url: "/FavoritePage",
+    url: "/dashboard/favorites",
     icon: Heart,
   },
   {
     title: "Contato",
-    url: "/ContatoPage",
+    url: "/dashboard/contact",
     icon: Mail,
   },
 ];

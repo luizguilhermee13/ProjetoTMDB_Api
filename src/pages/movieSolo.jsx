@@ -30,14 +30,17 @@ export default function MovieSelected() {
   }, [id]);
 
   return (
-    <div className="bg-gradient-to-t from-zinc-700 to-zinc-800 text-white  w-full h-full">
+    <div
+      className=" absolute bg-gradient-to-t from-blue-800 to-blue-400 text-white max-w-[77.5rem] w-full
+    h-full   my-2 font-mono"
+    >
       <div className="flex flex-col h-full items-center justify-evenly p-4 ">
-        <div className="shadow-sm shadow-red-700 flex flex-col items-center flex-wrap p-4 leading-relaxed bg-red-900">
+        <div className="shadow-sm shadow-red-700 flex flex-col items-center flex-wrap text-center  leading-relaxed">
           <h1 className="text-3xl">{filme.title}</h1>
           <img
             src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
             alt={filme.title}
-            className="rounded-lg w-[200px] my-2"
+            className="rounded-lg w-60 my-2"
           />
           <span>{filme.overview}</span>
           <p> Lançamento: {filme.release_date}</p>

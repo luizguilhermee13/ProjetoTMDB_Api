@@ -28,17 +28,18 @@ export default function ContatoPage() {
 
   return (
     <div
-      className={`max-w-screen-xl h-full  flex flex-wrap 
-    items-center justify-center  bg-gradient-to-r from-zinc-800 to-zinc-900`}
+      className={`absolute bg-gradient-to-t from-blue-800 to-blue-400 w-full max-w-[77.5rem]
+    h-full   my-2    flex flex-wrap 
+    items-center justify-center  `}
     >
       <div className="flex flex-col h-full justify-evenly">
         <div
-          className={`text-white sm:text-4xl md:text-5xl lg:text-6xl  
+          className={`text-white sm:text-3xl md:text-4xl lg:text-5xl  
           flex justify-center`}
         >
           <h1>Contatos</h1>
         </div>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-2 ">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 mb-2 ">
           {contatos.map((contato, index) => (
             <CardsContato key={index} contato={contato} />
           ))}
@@ -51,7 +52,7 @@ export default function ContatoPage() {
 function CardsContato({ contato }) {
   return (
     <Card
-      className={`w-[200px] h-[200px] flex items-center justify-center my-2 
+      className={`w-[220px] h-[200px] flex items-center justify-center my-2 
             shadow-md shadow-white hover:bg-zinc-700 hover:shadow-[#27275a] hover:text-yellow-50 
               `}
     >

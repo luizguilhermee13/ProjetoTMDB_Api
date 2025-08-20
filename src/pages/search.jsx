@@ -29,24 +29,26 @@ export default function SearchPage() {
 
   return (
     <div
-      className={`bg-gradient-to-t from-zinc-700 to-zinc-800 w-full
-    h-auto sm:max-w-screen-sm md:max-w-full lg:max-w-screen-lg  xl:max-w-screen-xl   my-2 p-2 mx-auto text-white
+      className={`absolute bg-gradient-to-t from-blue-800 to-blue-400 w-full max-w-[77.5rem]
+    h-auto   my-2 p-2 mx-auto text-white
      flex flex-col  `}
     >
       <div
         className={`w-full h-[30%] border shadow-zinc-800 shadow-md
-        sm:max-w-screen-sm md:max-w-full lg:max-w-screen-lg  xl:max-w-screen-xl `}
+        sm:w-screen-sm md:w-full lg:w-screen-lg  xl:w-screen-xl `}
       >
         <form
-          className={`h-full flex flex-col flex-wrap items-center justify-center text-4xl gap-10 shadow-md p-4
+          className={`h-full w-full flex flex-col flex-wrap items-center justify-center text-4xl gap-10 shadow-md p-2
           `}
         >
           <div>
-            <label>Pesquisa de Filmes</label>
+            <label className="font-mono text-[4rem] shadow-md ">
+              Pesquisa de Filmes
+            </label>
           </div>
-          <div className="flex flex-col items-center gap-2  md:flex-row md:items-center md:justify-center">
+          <div className="flex flex-col items-center gap-2  ">
             <input
-              className="rounded-xl p-2 mx-auto  text-black m-1"
+              className="rounded-xl p-1    text-black m-1"
               type="text"
               placeholder="Procure o filme"
               onChange={inputValue}
@@ -60,7 +62,7 @@ export default function SearchPage() {
           </div>
         </form>
         <div
-          className={`grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center  my-2 mx-auto gap-2 `}
+          className={`grid sm:grid-cols-2  lg:grid-cols-4 justify-center  my-2 mx-auto gap-2 `}
         >
           {filmes.map((filme, index) => (
             <ExibindoPesquisa key={index} filme={filme} />
@@ -73,7 +75,10 @@ export default function SearchPage() {
 
 function ExibindoPesquisa({ filme }) {
   return (
-    <div className="flex flex-col w-60 justify-center items-center gap-1 p-2 shadow-sm mx-auto bg-red-800 shadow-black rounded-lg">
+    <div
+      className="flex flex-col w-60 justify-center items-center gap-1 p-2 shadow-sm mx-auto bg-red-600 hover:bg-red-700
+     shadow-black rounded-lg font-mono text-[1.2rem] text-center"
+    >
       <h2>{filme.title}</h2>
       <img
         className="h-40"

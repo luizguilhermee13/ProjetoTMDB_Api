@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Routes, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -54,11 +53,11 @@ export default function CarouselSize({ genero }) {
             key={filme.id || index}
             className="md:basis-1/3 lg:basis-1/4 "
           >
-            <div className="p-1">
-              <Card className="w-[180px] h-[240px]  bg-red-800 shadow-lg text-white border-none">
+            <div className="font-mono">
+              <Card className="w-[180px] h-[240px]  bg-red-600 hover:bg-red-700 shadow-lg text-white border-none">
                 <CardContent className="flex aspect-square items-center justify-center p-1  ">
                   <div className="  w-full h-[200px] ">
-                    <Link to={`/CategoriaSelecionada/${genero.id}`}>
+                    <Link to={`/dashboard/categories/${genero.id}`}>
                       <h2 className="flex justify-center m-0 text-2xl font-semibold mb-1">
                         {genero.name}
                       </h2>

@@ -91,3 +91,7 @@
   opacity: 1;
   z-index: -1;
 }
+
+html {
+  overflow: hidden;
+}

@@ -18,10 +18,7 @@ export default function SearchPage() {
       },
     };
 
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=pt-br&page=1`,
-      options
-    )
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=pt-br&page=1`, options)
       .then((res) => res.json())
       .then((res) => setFilmes(res.results || []))
       .catch((err) => console.error(err));
@@ -42,28 +39,16 @@ export default function SearchPage() {
           `}
         >
           <div>
-            <label className="font-mono text-[4rem] shadow-md ">
-              Pesquisa de Filmes
-            </label>
+            <label className="font-mono text-[4rem] shadow-md ">Pesquisa de Filmes</label>
           </div>
           <div className="flex flex-col items-center gap-2  ">
-            <input
-              className="rounded-xl p-1    text-black m-1"
-              type="text"
-              placeholder="Procure o filme"
-              onChange={inputValue}
-            />
-            <button
-              className="bg-red-800 p-2 rounded-xl shadow-lg hover:bg-red-600 "
-              onClick={Pesquisando}
-            >
+            <input className="rounded-xl p-1    text-black m-1" type="text" placeholder="Procure o filme" onChange={inputValue} />
+            <button className="bg-red-800 p-2 rounded-xl shadow-lg hover:bg-red-600 " onClick={Pesquisando}>
               Pesquisar
             </button>
           </div>
         </form>
-        <div
-          className={`grid sm:grid-cols-2  lg:grid-cols-4 justify-center  my-2 mx-auto gap-2 `}
-        >
+        <div className={`grid sm:grid-cols-2  lg:grid-cols-4 justify-center  my-2 mx-auto gap-2 `}>
           {filmes.map((filme, index) => (
             <ExibindoPesquisa key={index} filme={filme} />
           ))}
@@ -80,10 +65,7 @@ function ExibindoPesquisa({ filme }) {
      shadow-black rounded-lg font-mono text-[1.2rem] text-center"
     >
       <h2>{filme.title}</h2>
-      <img
-        className="h-40"
-        src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
-      />
+      <img className="h-40" src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`} />
     </div>
   );
 }

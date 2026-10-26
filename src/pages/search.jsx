@@ -1,4 +1,5 @@
 import { useState } from "react";
+const TMDB_TOKEN = import.meta.env.VITE_TMDB_TOKEN;
 
 export default function SearchPage() {
   const [searchInput, setSearchInput] = useState("");
@@ -13,57 +14,47 @@ export default function SearchPage() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjN2Q0NjFiNTQzY2Q3Yzk0ZjgyNDA0MmJlZjRjMDljMSIsIm5iZiI6MTc0OTc1MTg2Ni44NDUsInN1YiI6IjY4NGIxODNhM2E4YjIyOWM1N2JiNDI5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qmaXeBBcbDm3YagAJ-2AH9SKJ5u1n5_PyoNHXqXBRmw",
+        Authorization: `Bearer ${TMDB_TOKEN}`,
       },
     };
 
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=pt-br&page=1`,
-      options
-    )
+    fetch(`https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=pt-br&page=1`, options)
       .then((res) => res.json())
       .then((res) => setFilmes(res.results || []))
       .catch((err) => console.error(err));
   }
 
   return (
-    <div
-      className={`absolute bg-gradient-to-t from-blue-800 to-blue-400 w-full max-w-[77.5rem]
-    h-auto   my-2 p-2 mx-auto text-white
-     flex flex-col  `}
-    >
-      <div
-        className={`w-full h-[30%] border shadow-zinc-800 shadow-md
-        sm:w-screen-sm md:w-full lg:w-screen-lg  xl:w-screen-xl `}
-      >
-        <form
-          className={`h-full w-full flex flex-col flex-wrap items-center justify-center text-4xl gap-10 shadow-md p-2
-          `}
-        >
-          <div>
-            <label className="font-mono text-[4rem] shadow-md ">
+    <div className={`bg-gradient-to-t from-blue-800 to-blue-400 w-full text-white flex flex-col rounded-2xl p-2 sm:p-4`}>
+      <div className={`w-full max-h-fit border shadow-zinc-800 shadow-md rounded-2xl p-4 bg-transparent`}>
+        <form onSubmit={Pesquisando} className={`w-full flex flex-col items-center justify-center gap-6 p-2`}>
+          {/* Título responsivo: escalonado de 3xl no mobile até 6xl em telas maiores */}
+          <div className="w-full text-center">
+            <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-wide text-center">
               Pesquisa de Filmes
-            </label>
+            </h1>
           </div>
-          <div className="flex flex-col items-center gap-2  ">
+
+          {/* Wrapper com max-w-xl para evitar estouro do input no mobile */}
+          <div className="flex flex-col items-center gap-4 w-full max-w-xl mb-2">
             <input
-              className="rounded-xl p-1    text-black m-1"
+              className="w-full rounded-xl py-3 px-4 text-xl sm:text-2xl text-black shadow-inner outline-none focus:ring-2 focus:ring-blue-300"
               type="text"
               placeholder="Procure o filme"
+              value={searchInput}
               onChange={inputValue}
             />
             <button
-              className="bg-red-800 p-2 rounded-xl shadow-lg hover:bg-red-600 "
+              className="w-full sm:w-auto bg-red-800 py-3 px-8 rounded-xl shadow-lg hover:bg-red-600 text-xl sm:text-2xl font-semibold transition-colors"
               onClick={Pesquisando}
             >
               Pesquisar
             </button>
           </div>
         </form>
-        <div
-          className={`grid sm:grid-cols-2  lg:grid-cols-4 justify-center  my-2 mx-auto gap-2 `}
-        >
+
+        {/* Grade fluida otimizada para todas as resoluções */}
+        <div className={`grid grid-cols-[repeat(auto-fill,minmax(13rem,1fr))] my-4 gap-4`}>
           {filmes.map((filme, index) => (
             <ExibindoPesquisa key={index} filme={filme} />
           ))}
@@ -75,22 +66,20 @@ export default function SearchPage() {
 
 function ExibindoPesquisa({ filme }) {
   return (
-    <div
-      className="flex flex-col w-60 justify-center items-center gap-1 p-2 shadow-sm mx-auto bg-red-600 hover:bg-red-700
-     shadow-black rounded-lg font-mono text-[1.2rem] text-center"
-    >
-      <h2>{filme.title}</h2>
-      <img
-        className="h-40"
-        src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
-      />
+    <div className="flex flex-col w-full items-center justify-between gap-2 p-3 bg-red-600 hover:bg-red-700 shadow-md shadow-black rounded-xl font-mono text-sm sm:text-base text-center transition-transform hover:scale-[1.02]">
+      <h2 className="font-bold line-clamp-1 w-full" title={filme.title}>
+        {filme.title}
+      </h2>
+
+      {filme.poster_path ? (
+        <img
+          className="w-full aspect-[2/3] object-cover rounded-lg shadow"
+          src={`https://image.tmdb.org/t/p/w500${filme.poster_path}`}
+          alt={filme.title}
+        />
+      ) : (
+        <div className="w-full aspect-[2/3] bg-red-800 flex items-center justify-center rounded-lg text-xs">Sem imagem</div>
+      )}
     </div>
   );
 }
-
-/* ENDPOINT usado 
-https://api.themoviedb.org/3/search/movie
-
-link
-https://developer.themoviedb.org/reference/search-movie
-*/

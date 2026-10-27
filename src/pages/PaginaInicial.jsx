@@ -1,78 +1,53 @@
 import { Link } from "react-router-dom";
+import Main from "../components/ui/ContainerMain";
 
 export default function InicialPage() {
   return (
-    <div className="imgfundo max-w-screen h-screen p-2  text-white text-border flex flex-col ">
+    <div className="imgfundo max-w-screen h-screen p-1  text-white text-border flex flex-col ">
       <Header />
       <Main />
     </div>
   );
 }
 
-function Header() {
+export function Header() {
   return (
-    <div className=" w-full h-24 flex justify-between px-8 shadow-sm shadow-blue-400">
-      {/* Div logo*/}
-      <div className="p-2">
-        <img
-          className="w-40 h-full"
-          src="public/assets/themoviedbLogo.png"
-          alt="logo"
-        />
+    <header
+      className="w-full h-20 flex justify-between items-center px-6 sm:px-10
+     bg-black/40 backdrop-blur-md border-b border-white/10 shadow-lg rounded-lg"
+    >
+      {/* Div Logo */}
+      <div className="flex items-center h-10">
+        <img className="w-32 sm:w-36 h-auto object-contain" src="public/assets/themoviedbLogo.png" alt="Logo TMDB" />
       </div>
-      {/* Div idiomas*/}
-      <div className="flex gap-4 items-center">
+
+      {/* Div Idiomas e Entrar */}
+      <div className="flex items-center gap-3 sm:gap-4">
+        {/* Seletor de Idioma */}
         <div className="h-10">
           <select
             name="linguagem"
             id="idiomas"
-            className="bg-transparent hover:bg-blue-400 border border-white rounded-sm p-1 h-full"
+            className="bg-black/40 text-white border border-white/30 rounded-xl px-3 py-1 h-full text-sm sm:text-base outline-none hover:bg-white/10 transition-colors cursor-pointer"
           >
-            <option>Português</option>
-            <option>Inglês</option>
+            <option value="pt" className="bg-gray-900 text-white">
+              Português
+            </option>
+            <option value="en" className="bg-gray-900 text-white">
+              Inglês
+            </option>
           </select>
         </div>
-        {/* Div Entrar/Login */}
+
+        {/* Botão Entrar */}
         <div className="h-10">
-          <Link to={"/login"}>
-            <button className="h-full bg-blue-400 rounded-sm p-2 px-4 hover:bg-blue-600">
-              {" "}
+          <Link to={"/login"} className="h-full inline-block">
+            <button className="h-full bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 rounded-xl transition-colors shadow-md cursor-pointer text-sm sm:text-base flex items-center justify-center">
               Entrar
             </button>
           </Link>
         </div>
       </div>
-    </div>
-  );
-}
-
-function Main() {
-  return (
-    <div className="w-full h-full flex flex-col md:flex-row justify-center items-center leading-relaxed font-mono  ">
-      <div className="bg-transparent shadow-xl shadow-black p-2 h-80 rounded-md  flex items-center">
-        <div className="flex flex-col  justify-around h-full w-[90%] md:w-full ">
-          <p className="text-4xl">Filmes, séries e muito mais. Sem limites.</p>
-          <p className="text-3xl">
-            Assista onde quiser. Cancele quando quiser.
-          </p>
-          <p className="text-xl">
-            Pronto para assistir? Informe seu email para criar ou reiniciar sua
-            assinatura.
-          </p>
-          <form className="flex justify-center text-[2.6em]">
-            <input
-              type="text"
-              placeholder="Digite seu E-mail"
-              className="w-[80%] sm:w-full"
-            />
-            <input
-              className="bg-blue-400 hover:bg-blue-600 px-1 rounded-r-md"
-              type="button"
-              value="Vamos la"
-            />
-          </form>
-        </div>
-      </div>
-    </div>
+    </header>
   );
 }

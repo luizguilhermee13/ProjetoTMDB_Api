@@ -1,12 +1,56 @@
-# React + Vite
+# 🎬 Projeto TMDB - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto desenvolvido exclusivamente para fins **estudantis e práticos**. O objetivo principal foi aprimorar habilidades de consumo de APIs assíncronas no React e a integração de componentes de UI pré-construídos de diferentes ecossistemas para a criação de um site completo.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Objetivos do Projeto
 
-## Expanding the ESLint configuration
+1. **Consumo de API REST:** Integração com a API oficial do **The Movie Database (TMDB)** para exibição de filmes, séries e detalhes em tempo real.
+2. **Integração de Componentes da Comunidade:** Construção de um layout moderno reaproveitando e adaptando componentes de UI de diversas fontes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧩 Recursos e Créditos de UI
+
+O design e a estrutura visual foram construídos combinando diferentes referências da comunidade React:
+
+- **Sidebar / Navegação:** [shadcn/ui](https://ui.shadcn.com/)
+- **Tela Inicial (Main & Hero Section):** Inspirado e adaptado do [21st.dev](https://21st.dev/)
+- **Tela de Login (Sign-in Side Layout):** Inspirado nos templates do [MUI (Material UI)](https://mui.com/)
+- **Estilização Geral:** [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **React.js** (Vite)
+- **React Router DOM** (Navegação SPA)
+- **Tailwind CSS** (Estilização e Responsividade)
+- **Lucide React** (Iconografia)
+- **Framer Motion & Canvas Confetti** (Animações e efeitos)
+
+---
+
+## 📦 Como Rodar o Projeto
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
+
+2. **Instale as dependências:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+> 📌 _Projeto desenvolvido para fins de estudo e aprendizado prático._

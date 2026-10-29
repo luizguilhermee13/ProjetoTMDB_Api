@@ -30,7 +30,7 @@ export default function DashboardLayout() {
         </header>
 
         {/* Área onde as páginas do app serão renderizadas */}
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-4">
+        <div className="flex flex-1 flex-col gap-4 ">
           <Routes>
             <Route path="/" element={<HomeDashboardPage />} />
             <Route path="/search" element={<SearchPage />} />

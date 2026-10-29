@@ -29,7 +29,6 @@ export default function CategoriaSelecionada() {
     buscarFilmesPorCategoria();
   }, [id]);
 
-  // Transforma a resposta do TMDB para o formato esperado pelo CircularGallery
   const galleryItems = filmesCategoria.map((filme) => ({
     id: filme.id,
     common: filme.title,
@@ -43,17 +42,20 @@ export default function CategoriaSelecionada() {
   }));
 
   return (
-    // Estendemos a altura (400vh) para que a rolagem da página gire a galeria circular
-    <div className="w-full bg-gradient-to-t from-blue-800 to-blue-400 text-white min-h-screen relative" style={{ height: "400vh" }}>
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    // Removido max-w restritivo para preencher toda a largura da tela
+    <div
+      className="w-full bg-gradient-to-t from-blue-800 to-blue-400 text-white min-h-screen relative overflow-hidden"
+      style={{ height: "400vh" }}
+    >
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center">
         <div className="text-center absolute top-6 z-10 px-4">
           <h1 className="text-3xl sm:text-4xl font-bold font-mono tracking-wide drop-shadow-md">Filmes da Categoria</h1>
           <p className="text-xs sm:text-sm text-blue-200 mt-1">Role a página para girar os filmes em 3D</p>
         </div>
 
-        <div className="w-full h-full pt-16">
+        <div className="w-full h-full pt-16 flex items-center justify-center">
           {galleryItems.length > 0 ? (
-            <CircularGallery items={galleryItems} radius={450} autoRotateSpeed={0.015} />
+            <CircularGallery items={galleryItems} radius={750} autoRotateSpeed={0.015} />
           ) : (
             <div className="flex items-center justify-center h-full">
               <p className="text-xl font-mono animate-pulse">Carregando filmes...</p>

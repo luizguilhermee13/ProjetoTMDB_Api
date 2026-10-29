@@ -93,7 +93,7 @@ export default function LoginPage() {
               <input
                 type="password"
                 placeholder="••••••••"
-                defaultValue="123456"
+                defaultValue="432456"
                 required
                 className="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-[#01b4e4] transition-colors"
               />

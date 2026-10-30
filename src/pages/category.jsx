@@ -17,13 +17,11 @@ export default function CategotyPage() {
   };
 
   useEffect(() => {
-    // Busca a lista de gêneros
     fetch("https://api.themoviedb.org/3/genre/movie/list?language=pt-BR", options)
       .then((res) => res.json())
       .then((res) => setGenero(res.genres || []))
       .catch((err) => console.error(err));
 
-    // Busca os filmes em alta para o destaque do topo
     fetch("https://api.themoviedb.org/3/trending/movie/day?language=pt-BR", options)
       .then((res) => res.json())
       .then((res) => setTrendingMovies(res.results || []))
@@ -31,20 +29,22 @@ export default function CategotyPage() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full min-h-screen my-2 bg-gradient-to-t from-blue-800 to-blue-400 text-white rounded-2xl p-2 sm:p-4 overflow-hidden">
-      <div className="w-full">
-        <div className="w-full text-center my-4">
-          <h1 className="font-mono text-3xl sm:text-5xl font-bold tracking-wide">Gêneros e Destaques</h1>
+    // Cores oficiais do TMDB: gradiente do azul escuro profundo para o azul claro/tecnológico da marca
+    <div className="w-full h-full min-h-[calc(100vh-2rem)] bg-gradient-to-b from-[#032541] via-[#0d253f] to-[#01b4e4] text-white rounded-2xl p-4 sm:p-6 overflow-x-hidden box-border flex flex-col shadow-2xl">
+      <div className="w-full max-w-7xl mx-auto flex flex-col flex-1">
+        {/* Título */}
+        <div className="w-full text-center mb-6">
+          <h1 className="font-mono text-3xl sm:text-4xl font-bold tracking-wide text-white drop-shadow-md">Gêneros e Destaques</h1>
         </div>
 
         {/* Destaques em Alta no Topo */}
-        <div className="w-full mb-6">
-          <h2 className="text-xl font-mono px-6 mb-2 text-blue-200">Em Alta</h2>
+        <div className="w-full mb-6 overflow-hidden">
+          <h2 className="text-lg sm:text-xl font-mono px-2 mb-2 text-[#90cea1] font-semibold">Em Alta</h2>
           <ImageAutoSlider movies={trendingMovies} />
         </div>
 
         {/* Lista de todos os Gêneros */}
-        <div className="w-full flex flex-col gap-4 my-2">
+        <div className="w-full flex flex-col gap-6 overflow-hidden">
           {genero.map((item) => (
             <GenreAutoSlider key={item.id} genre={item} />
           ))}

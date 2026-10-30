@@ -23,57 +23,30 @@ export const GenreAutoSlider = ({ genre }) => {
 
   if (movies.length === 0) return null;
 
-  // Duplica os filmes para garantir o loop infinito perfeito
   const duplicatedMovies = [...movies, ...movies];
 
   return (
-    <div className="w-full my-4">
+    <div className="w-full max-w-full my-4 overflow-hidden">
       <style>{`
         @keyframes scroll-slow {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-
         .infinite-scroll-slow {
-          animation: scroll-slow 50s linear infinite; /* 50s deixa bem devagar e suave */
+          animation: scroll-slow 50s linear infinite;
         }
-
         .infinite-scroll-slow:hover {
-          animation-play-state: paused; /* Pausa quando o mouse passa por cima */
+          animation-play-state: paused;
         }
-
-        .scroll-container-mask {
-          mask: linear-gradient(
-            90deg,
-            transparent 0%,
-            black 5%,
-            black 95%,
-            transparent 100%
-          );
-          -webkit-mask: linear-gradient(
-            90deg,
-            transparent 0%,
-            black 5%,
-            black 95%,
-            transparent 100%
-          );
-        }
-
         .movie-card-hover {
           transition: transform 0.3s ease, filter 0.3s ease;
         }
-
         .movie-card-hover:hover {
           transform: scale(1.05);
           filter: brightness(1.1);
         }
       `}</style>
 
-      {/* Cabeçalho do Gênero com link para a visão 3D */}
       <div className="flex justify-between items-center px-6 mb-2">
         <h2 className="text-xl font-mono font-bold text-white drop-shadow">{genre.name}</h2>
         <Link
@@ -84,8 +57,7 @@ export const GenreAutoSlider = ({ genre }) => {
         </Link>
       </div>
 
-      {/* Slider Infinito Lento */}
-      <div className="scroll-container-mask w-full overflow-hidden py-2">
+      <div className="w-full max-w-full overflow-hidden py-2">
         <div className="infinite-scroll-slow flex gap-4 w-max px-2">
           {duplicatedMovies.map((movie, index) => (
             <Link
